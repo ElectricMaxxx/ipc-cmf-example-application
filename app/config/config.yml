@@ -33,7 +33,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [CmfCreateBundle]
+    bundles:        []
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -74,33 +74,18 @@ doctrine_cache:
             type: file_system
 
 # Cmf Configuration
-cmf_core:
-    persistence:
-        phpcr: true
-        # if you want another basepath
-        # basepath: /custom/basepath
-    publish_workflow: false
 
-# Cmf Routing Configuration
 cmf_routing:
+    chain:
+        routers_by_id:
+            cmf_routing.dynamic_router: 200
+            router.default:             100
     dynamic:
-        templates_by_class:
-            Symfony\Cmf\Bundle\SimpleCmsBundle\Doctrine\Phpcr\Page: AcmeDemoBundle:Page:index.html.twig
-
+        persistence:
+            phpcr: ~
 # Menu Configuration
-knp_menu:
-    twig: true
 
-sonata_block:
-    default_contexts: [cms]
 
-# Cmf Create Configuration
-fos_rest:
-    view:
-        formats:
-            json: true
-
-# Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
