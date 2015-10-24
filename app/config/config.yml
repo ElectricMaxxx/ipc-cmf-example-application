@@ -79,7 +79,7 @@ cmf_routing:
     dynamic:
         templates_by_class:
             Symfony\Cmf\Bundle\SimpleCmsBundle\Doctrine\Phpcr\Page: IPCApplicationBundle:Page:index.html.twig
-
+            \Symfony\Cmf\Bundle\ContentBundle\Doctrine\Phpcr\StaticContent: IPCApplicationBundle:Page:index.html.twig
     chain:
         routers_by_id:
             cmf_routing.dynamic_router: 200

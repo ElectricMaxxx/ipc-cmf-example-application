@@ -29,5 +29,9 @@
     {% block main %}{% endblock %}
 </div>
 
+
+<div class="navbar navbar-inverse page__nav" role="navigation">
+    {{ knp_menu_render('footer', {'template': 'IPCApplicationBundle:Menu:bootstrap.html.twig', 'currentClass': 'active'}) }}
+</div>
 </body>
 </html>
