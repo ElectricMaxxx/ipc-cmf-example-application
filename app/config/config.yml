@@ -76,15 +76,24 @@ doctrine_cache:
 # Cmf Configuration
 
 cmf_routing:
+    dynamic:
+        templates_by_class:
+            Symfony\Cmf\Bundle\SimpleCmsBundle\Doctrine\Phpcr\Page: IPCApplicationBundle:Page:index.html.twig
+
     chain:
         routers_by_id:
             cmf_routing.dynamic_router: 200
             router.default:             100
-    dynamic:
-        persistence:
-            phpcr: ~
 # Menu Configuration
+knp_menu:
+    twig: true
 
+cmf_core:
+    persistence:
+        phpcr: true
+        # if you want another basepath
+        # basepath: /custom/basepath
+    publish_workflow: false
 
 swiftmailer:
     transport: "%mailer_transport%"

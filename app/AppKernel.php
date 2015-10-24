@@ -22,6 +22,11 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\PHPCRBundle\DoctrinePHPCRBundle(),
             new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
             new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new \Symfony\Cmf\Bundle\ContentBundle\CmfContentBundle(),
+            new \Symfony\Cmf\Bundle\CoreBundle\CmfCoreBundle(),
+            new \Symfony\Cmf\Bundle\MenuBundle\CmfMenuBundle(),
+            new Symfony\Cmf\Bundle\SimpleCmsBundle\CmfSimpleCmsBundle(),
 
             // Remove this Bundle when using the SE as the basis for a new project
             new IPCApplicationBundle\IPCApplicationBundle(),
