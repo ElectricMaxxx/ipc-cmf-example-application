@@ -27,6 +27,8 @@ class AppKernel extends Kernel
             new \Symfony\Cmf\Bundle\CoreBundle\CmfCoreBundle(),
             new \Symfony\Cmf\Bundle\MenuBundle\CmfMenuBundle(),
             new Symfony\Cmf\Bundle\SimpleCmsBundle\CmfSimpleCmsBundle(),
+            new \Sonata\SeoBundle\SonataSeoBundle(),
+            new \Symfony\Cmf\Bundle\SeoBundle\CmfSeoBundle(),
 
             // Remove this Bundle when using the SE as the basis for a new project
             new IPCApplicationBundle\IPCApplicationBundle(),
