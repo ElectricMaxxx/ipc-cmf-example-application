@@ -26,19 +26,39 @@ class LoadAdvancedExample implements FixtureInterface
         $routeParent = $manager->find(null, '/cms/routes');
         $menuBase = $manager->find(null, '/cms/menu');
 
-        $serviceRoute = new Route();
-        $serviceRoute->setPosition($routeParent, 'services');
-        $manager->persist($serviceRoute);
+        $enRoute = new Route();
+        $enRoute->setPosition($routeParent, 'en');
+        $manager->persist($enRoute);
+        $deRoute = new Route();
+        $deRoute->setPosition($routeParent, 'de');
+        $manager->persist($deRoute);
+
+        $enServiceRoute = new Route();
+        $enServiceRoute->setPosition($enRoute, 'services');
+        $manager->persist($enServiceRoute);
+        $deServiceRoute = new Route();
+        $deServiceRoute->setPosition($deRoute, 'dienstleistungen');
+        $manager->persist($deServiceRoute);
 
         $content = new StaticContent();
         $content->setParentDocument($contentParent);
         $content->setName('symfony-service');
-        $content->setTitle('Symfony Service');
-        $content->setBody('A page about Symfony service');
         $manager->persist($content);
 
+
+        $content->setTitle('Symfony Service');
+        $content->setBody('A page about Symfony service');
+        $manager->bindTranslation($content, 'en');
         $contentRoute = new Route();
-        $contentRoute->setPosition($serviceRoute, 'symfony-service');
+        $contentRoute->setPosition($enServiceRoute, 'symfony-service');
+        $contentRoute->setContent($content);
+        $manager->persist($contentRoute);
+
+        $content->setTitle('Symfony Dienstleistungen');
+        $content->setBody('Eine Seite über Symfony Dienstleistungen');
+        $manager->bindTranslation($content, 'de');
+        $contentRoute = new Route();
+        $contentRoute->setPosition($deServiceRoute, 'symfony-dienstleistungen');
         $contentRoute->setContent($content);
         $manager->persist($contentRoute);
 
@@ -48,10 +68,14 @@ class LoadAdvancedExample implements FixtureInterface
 
         $menuNode = new MenuNode();
         $menuNode->setParentDocument($menu);
-        $menuNode->setName('symfony-service');
-        $menuNode->setLabel('Symfony Services');
         $menuNode->setContent($content);
+        $menuNode->setName('symfony-service');
         $manager->persist($menuNode);
+
+        $menuNode->setLabel('Symfony Services');
+        $manager->bindTranslation($menuNode, 'en');
+        $menuNode->setLabel('Symfony Dienstleistungen');
+        $manager->bindTranslation($menuNode, 'de');
 
         $manager->flush();
     }

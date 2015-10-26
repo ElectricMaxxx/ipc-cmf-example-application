@@ -24,7 +24,7 @@ class LoadSeoContent implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $contentParent = $manager->find(null, '/cms/content');
-        $routeParent = $manager->find(null, '/cms/routes/services');
+        $routeParent = $manager->find(null, '/cms/routes/en/services');
         $menuBase = $manager->find(null, '/cms/menu/footer');
 
         $content = new DemoSeoContent();
@@ -36,6 +36,7 @@ class LoadSeoContent implements FixtureInterface
         $metaData->setMetaDescription('Description in Metadata');
         $content->setSeoMetadata($metaData);
         $manager->persist($content);
+        $manager->bindTranslation($content, 'en');
 
 
         $contentRoute = new Route();

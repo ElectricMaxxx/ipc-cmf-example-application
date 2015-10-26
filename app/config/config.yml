@@ -64,6 +64,10 @@ doctrine_phpcr:
     odm:
         auto_mapping: true
         auto_generate_proxy_classes: "%kernel.debug%"
+        locales:
+            en: [de ]
+            de: [en ]
+        locale_fallback: hardcoded
 
 # Jackalope Metadata and Node Cache services
 doctrine_cache:
@@ -94,6 +98,14 @@ cmf_core:
         # if you want another basepath
         # basepath: /custom/basepath
     publish_workflow: false
+    multilang:
+      locales: "%locales%"
+
+lunetics_locale:
+    allowed_locales: "%locales%"
+    guessing_order:
+        - router
+        - browser
 
 # seo handling
 cmf_seo:
