@@ -52,7 +52,7 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-        path:     "%database_path%"
+        #path:     "%database_path%"
 
 # Doctrine PHPCR-ODM configuration
 doctrine_phpcr:

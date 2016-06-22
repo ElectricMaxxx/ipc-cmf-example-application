@@ -2,6 +2,7 @@
 
 namespace IPCApplicationBundle\DataFixtures\PHPCR;
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ODM\PHPCR\DocumentManager;
 use Symfony\Cmf\Bundle\ContentBundle\Doctrine\Phpcr\StaticContent;
@@ -12,7 +13,7 @@ use Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route;
 /**
  * @author Maximilian Berghoff <Maximilian.Berghoff@mayflower.de>
  */
-class LoadAdvancedExample implements FixtureInterface
+class LoadAdvancedExample implements FixtureInterface, OrderedFixtureInterface
 {
 
     /**
@@ -78,5 +79,15 @@ class LoadAdvancedExample implements FixtureInterface
         $manager->bindTranslation($menuNode, 'de');
 
         $manager->flush();
+    }
+    
+    /**
+     * Get the order of this fixture
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return 3;
     }
 }

@@ -3,6 +3,7 @@
 namespace IPCApplicationBundle\DataFixtures\PHPCR;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ODM\PHPCR\DocumentManager;
 use IPCApplicationBundle\Document\DemoSeoContent;
@@ -13,7 +14,7 @@ use Symfony\Cmf\Bundle\SeoBundle\Doctrine\Phpcr\SeoMetadata;
 /**
  * @author Maximilian Berghoff <Maximilian.Berghoff@mayflower.de>
  */
-class LoadSeoContent implements FixtureInterface
+class LoadSeoContent implements FixtureInterface, OrderedFixtureInterface
 {
 
     /**
@@ -40,7 +41,8 @@ class LoadSeoContent implements FixtureInterface
 
 
         $contentRoute = new Route();
-        $contentRoute->setPosition($routeParent, 'seo-service');
+        $contentRoute->setParentDocument($routeParent);
+        $contentRoute->setName('seo-service');
         $contentRoute->setContent($content);
         $manager->persist($contentRoute);
 
@@ -52,5 +54,15 @@ class LoadSeoContent implements FixtureInterface
         $manager->persist($menuNode);
 
         $manager->flush();
+    }
+
+    /**
+     * Get the order of this fixture
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return 4;
     }
 }
