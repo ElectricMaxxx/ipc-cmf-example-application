@@ -3,6 +3,11 @@
 `composer update` ausführen, klar
 
 
+```
+cp app/config/parameters.yml.dist app/console/parameters.yml 
+# Edit the parameters especially the database connection
+```
+
 und dann für das PHPCR:
 
 ```
