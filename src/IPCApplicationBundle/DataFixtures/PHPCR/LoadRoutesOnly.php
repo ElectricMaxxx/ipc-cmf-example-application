@@ -1,6 +1,7 @@
 <?php
 
 namespace IPCApplicationBundle\DataFixtures\PHPCR;
+
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -27,7 +28,9 @@ class LoadRoutesOnly implements  FixtureInterface, OrderedFixtureInterface
 
         $route = new Route();
         $route->setPosition($routeBase, 'route_only');
-        $route->addDefaults(['_controller' => 'ipc_application.controller.default:routeOnlyAction']);
+        $route->addDefaults([
+            '_controller' => 'froscon_application.controller.default:routeOnlyAction'
+        ]);
 
         $manager->persist($route);
         $manager->flush();

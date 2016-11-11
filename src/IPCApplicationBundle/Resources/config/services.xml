@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="ipc_application.controller.default" class="IPCApplicationBundle\Controller\DefaultController">
+        <service id="froscon_application.controller.default" class="IPCApplicationBundle\Controller\DefaultController">
             <call method="setContainer"><argument type="service" id="service_container" /> </call>
         </service>
     </services>
